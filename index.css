@@ -350,3 +350,52 @@ footer .copy-p {
         font-size: 15px;
     }
 }
+.swiper {
+    width: 90vw;
+    height: 300px;
+    padding: 0 2rem;
+  }
+  .swiper-slide {
+    font-size: 18px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(43, 101, 232, .04);
+    border-radius: 12px;
+    padding: 0 .5rem;
+  }
+  .testimonial-container h4{
+    text-align: center;
+color: #2b65e8;
+font-size: 3rem;
+font-weight: 800;
+  }
+  .testimonial-text{
+    font-size: 14px;
+    height: 5rem;
+  }
+  .quote-img{
+    width: 1rem;
+  }
+  .swiper-button-next:after,
+.swiper-button-prev:after {
+font-size: 1rem;
+background-color: #fff;
+padding: .5rem;
+border-radius: 50%;
+}
+.last-testimonials{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+  @media (max-width: 500px) {
+    .swiper{
+        padding: 0 0;
+    }
+    .testimonial-container h4{
+        font-size: 1rem;
+    }
+  }
