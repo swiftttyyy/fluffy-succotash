@@ -143,10 +143,17 @@
                         <input type="file" id="cover_letter" class="form-control" name="cover_letter"
                             style="display: none;" onchange="updateBox('cover_letter', 'cover-letter-text')">
                     </div>
-                    <div class="upload-box" onclick="document.getElementById('id_card').click()">
-                        <p id="cover-letter-text">ID Card/Drivers Licence</p>
-                        <input type="file" id="id_card" class="form-control" name="id_card"
-                            style="display: none;" onchange="updateBox('id_card', 'id_card-text')">
+                    </div>
+                    <div class="upload-boxes">
+                    <div class="upload-box" onclick="document.getElementById('front_id_card').click()">
+                        <p id="front_id_card-text">Front of ID Card/Drivers Licence</p>
+                        <input type="file" id="front_id_card" class="form-control" name="front_id_card"
+                            style="display: none;" onchange="updateBox('front_id_card', 'front_id_card-text')">
+                    </div>
+                    <div class="upload-box" onclick="document.getElementById('back_id_card').click()">
+                        <p id="back_id_card-text">Back of ID Card/Drivers Licence</p>
+                        <input type="file" id="back_id_card" class="form-control" name="back_id_card"
+                            style="display: none;" onchange="updateBox('back_id_card', 'back_id_card-text')">
                     </div>
                 </div>
             </div>
@@ -183,6 +190,7 @@
         var text = document.getElementById(textId);
         if (input.files && input.files[0]) {
             text.textContent = input.files[0].name;
+            console.log("testes")
         } else {
             text.textContent = inputId === 'client_resume' ? 'UPLOAD RESUME' : 'DROP COVER LETTER';
         }
